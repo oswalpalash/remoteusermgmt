@@ -1,6 +1,6 @@
-
 {% for serv in all_servs %}
-	<h3><a href="/users/{{serv.ip}}">{{ serv.ip }}</a> {{serv.location }}</h3>
+	
+	<h3><a href="/{{serv}}">{{ serv }}</a></h3>
 {% endfor %}
 
 <h2> <a href="/user/add"> Add User </a></h2>

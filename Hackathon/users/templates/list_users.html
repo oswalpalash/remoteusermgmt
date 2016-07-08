@@ -2,7 +2,7 @@
 
 {% for serv in all_servs %}
 	
-	<h3><a href="{{ip}}/{{serv}}"> {{ serv }} </a> <tab>  &emsp;&emsp; <a href="{{ip}}/{{serv}}/update/">Update</a> &emsp;&emsp;<a href="/user/delete?ip={{ip}}&user={{serv}}">  Delete</a></h3>
+	<h3><a href="{{ip}}/{{serv}}"> {{ serv }} </a> <tab>  &emsp;&emsp; <a href="/user/update?ip={{ip}}&user={{serv}}">Update</a> &emsp;&emsp;<a href="/user/delete?ip={{ip}}&user={{serv}}">  Delete</a></h3>
 {% endfor %}
 
 

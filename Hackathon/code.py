@@ -16,6 +16,16 @@ def deleteUser(serverIp,serverPass,username,password):
 		stdin, stdout, stderr = client.exec_command('deluser --remove-home'+ username)
        	else:
 		stdin, stdout, stderr = client.exec_command('userdel --remove'+ username)
-	 client.close()
+
+	client.close()
+
+def listUsers(serverIp,serverPass):
+	client = paramiko.SSHClient()
+        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        client.connect(serverIp, username='root', password=serverPass)
+	stdin, stdout, stderr = client.exec_command('cut -d: -f1 /etc/passwd')
+        client.close()
+	return stdout
+
 
 

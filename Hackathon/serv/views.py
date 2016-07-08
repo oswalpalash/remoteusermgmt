@@ -22,7 +22,7 @@ def add_serv(request):
 	#return HttpResponse(ipad)
 	#TODO Add SSH CHECK
 	ssh=paramiko.SSHClient()
-	ssh.set_mission_host_key_policy(paramiko.AudoAddPolicy())
+	ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 	ping_var=os.system('ping -c 1 -W 5 '+ipad)
 	if ping_var == 0:
 		try:

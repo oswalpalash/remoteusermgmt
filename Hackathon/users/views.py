@@ -11,7 +11,7 @@ def list_users(request,ip):
     passw = Serv.objects.get(ip=a[2]).rpass
     all_users = listUsers(a[2],passw)
     #return HttpResponse()
-    return render(request, 'list_users.html', {'all_servs':all_users})	
+    return render(request, 'list_users.html', {'all_servs':all_users,'ip':a[2]})	
 
 def add_user(request):
     return HttpResponse("works")

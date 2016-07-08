@@ -1,6 +1,8 @@
+<h2> <a href="/user/add"> Add User </a></h2>
+
 {% for serv in all_servs %}
 	
-	<h3><a href="/{{serv}}">{{ serv }}</a></h3>
+	<h3><a href="{{ip}}/{{serv}}"> {{ serv }} </a> <tab>  &emsp;&emsp; <a href="{{ip}}/{{serv}}/update/">Update</a> &emsp;&emsp;<a href="{{ip}}/{{serv}}/delete/">  Delete</a></h3>
 {% endfor %}
 
-<h2> <a href="/user/add"> Add User </a></h2>
+

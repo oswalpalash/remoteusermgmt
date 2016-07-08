@@ -14,3 +14,4 @@ def list_all(request):
 def add_serv(request): 
     if (request.method=="GET"):
     	return render(request, 'add_serv.html')
+    

@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from django.http import HttpResponse
 from django.conf import settings
 # Create your views here.
-import os
+import os,paramiko
 from serv.models import Serv
 #templ_dir = TEMPLATE_DIRS
 def list_all(request):
@@ -20,6 +20,19 @@ def add_serv(request):
 	loc = request.POST.get("textinput")
 	Serv_obj = Serv(ip=ipad,rpass=r_pass,location=loc)
 	#return HttpResponse(ipad)
-	#TODO Add SSH CHECK	
+	#TODO Add SSH CHECK
+	ssh=paramiko.SSHClient()
+	ssh.set_mission_host_key_policy(paramiko.AudoAddPolicy())
+	ping_var=os.system('ping -c 1 -W 5 '+ipad)
+	if ping_var == 0:
+		try:
+			ssh.connect(ipad,username='root',password=r_pass)
+		except AuthenticationException:
+			print "Unauthorized"
+		else:
+			print "No probs"
+	
+	else:	
+		pass #Server doesn't exsits
 	Serv_obj.save()
 	return redirect('/')

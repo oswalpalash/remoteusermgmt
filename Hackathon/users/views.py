@@ -22,11 +22,8 @@ def add_user(request):
 	server = request.POST.get("serv")
 	projid = request.POST.get("projid")
 	servpass = Serv.objects.get(ip=server).rpass
-	print "1"	
 	createUser(server,servpass,userid,upass)
 	userz = Users(userid,upass,projid)
-	print "2"
-	
 	userz.save()
     	return render(request, 'add_user.html',{})
 
@@ -35,4 +32,5 @@ def delete_user(request):
      username = request.GET.get('user')	
      servpass = Serv.objects.get(ip=ipadd).rpass
      deleteUser(ipadd,servpass,username)
+     Users.objects.get(username=username).delete()
      return HttpResponse("success")

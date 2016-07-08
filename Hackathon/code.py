@@ -13,11 +13,7 @@ def deleteUser(serverIp,serverPass,username):
 	client = paramiko.SSHClient()
 	client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 	client.connect(serverIp, username='root', password=serverPass)
-	if("Ubuntu" in platform.dist()[0]):
-		stdin, stdout, stderr = client.exec_command('deluser --remove-home '+ username)
-       	else:
-		stdin, stdout, stderr = client.exec_command('userdel --remove '+ username)
-
+	stdin, stdout, stderr = client.exec_command('deluser --remove-home '+ username+'; userdel -r '+username)	
 	client.close()
 
 def listUsers(serverIp,serverPass):

@@ -8,7 +8,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="/serv/add" method="post">{% csrf_token %}
 <fieldset>
 
 <!-- Form Name -->
@@ -18,10 +18,9 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Server IP</label>  
+  <label class="col-md-4 control-label" for="servip">Server IP</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="103.123.123.123" class="form-control input-md" required="">
-    
+  <input id="servip" name="servip" type="text" placeholder="103.123.123.123" class="form-control input-md" required="">
   </div>
 </div>
 

@@ -19,6 +19,6 @@ from serv.views import list_all,add_serv
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',list_all),
     url(r'^serv/add$',add_serv),
+    url(r'^$',list_all),
 ]

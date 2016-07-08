@@ -6,7 +6,7 @@ def createUser(serverIp,serverPass,username,password):
 	client = paramiko.SSHClient()
 	client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 	client.connect(serverIp, username='root', password=serverPass)
-	stdin, stdout, stderr = client.exec_command('useradd -p' +password+ username)
+	stdin, stdout, stderr = client.exec_command('useradd -p ' +password +' '+ username)
 	client.close()
 
 def deleteUser(serverIp,serverPass,username,password):

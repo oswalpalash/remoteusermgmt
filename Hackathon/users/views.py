@@ -14,4 +14,15 @@ def list_users(request,ip):
     return render(request, 'list_users.html', {'all_servs':all_users,'ip':a[2]})	
 
 def add_user(request):
-    return HttpResponse("works")
+    if request.method=="GET":
+	return render(request, 'add_user.html',{})
+    if request.method=="POST":
+	upass = request.POST.get("passwordinput")
+	userid = request.POST.get("textinput")
+	server = request.POST.get("serv")
+	projid = request.POST.get("projid")
+	servpass = Serv.objects.get(ip=server).rpass
+	userz = Users(userid,upass,projid)
+	createUser(server,servpass,userid,upass)
+	userz.save()
+    	return render(request, 'add_user.html',{})

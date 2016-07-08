@@ -1,0 +1,58 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+<form class="form-horizontal" action="/user/add" method="post">{% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<legend style="
+    text-align: center;
+">Add User</legend>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Username</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" placeholder="daemon_sys" class="form-control input-md">
+
+
+
+
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Project ID/s</label>  
+  <div class="col-md-4">
+  <input id="projid" name="projid" type="text" placeholder="daemon_sys" class="form-control input-md">
+  </div>
+</div>
+
+<!-- Password input-->
+    <div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput">Password</label>
+  <div class="col-md-4">
+    <input id="passwordinput" name="passwordinput" type="password" placeholder="root12345" class="form-control input-md" required="">
+    
+<br>
+<input type="submit" class="btn btn-info" value="Submit">
+  </div>
+</div>
+<div class="form-group"  style="display: none;">
+  <label class="col-md-4 control-label" for="textinput">Server IP</label>  
+  <div class="col-md-4">
+  <input id="serv" name="serv" type="text" placeholder="daemon_sys" class="form-control input-md" value="{{ request.GET.ip }}">
+
+
+
+
+  </div>
+</div>
+</fieldset>
+</form>
+

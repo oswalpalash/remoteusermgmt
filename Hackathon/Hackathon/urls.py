@@ -16,12 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from serv.views import list_all,add_serv
-from users.views import list_users,add_user
+from users.views import list_users,add_user,delete_user
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^serv/add$',add_serv),
     url(r'^user/add',add_user),
+    url(r'^user/delete',delete_user),
     url(r'^users/(?P<ip>\w+)/?', list_users , name = "ip"),
     url(r'^$',list_all),
 ]

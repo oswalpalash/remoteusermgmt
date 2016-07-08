@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.conf import settings
 # Create your views here.
 from users.models import Users
-from code import listUsers,createUser
+from code import listUsers,createUser,deleteUser
 from serv.models import Serv
 def list_users(request,ip):
     a = request.get_full_path().split('/')
@@ -29,3 +29,10 @@ def add_user(request):
 	
 	userz.save()
     	return render(request, 'add_user.html',{})
+
+def delete_user(request):
+     ipadd = request.GET.get('ip')
+     username = request.GET.get('user')	
+     servpass = Serv.objects.get(ip=ipadd).rpass
+     deleteUser(ipadd,servpass,username)
+     return HttpResponse("success")

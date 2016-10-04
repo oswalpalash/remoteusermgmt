@@ -13,24 +13,25 @@ def list_users(request,ip):
     #return HttpResponse()
     return render(request, 'list_users.html', {'all_servs':all_users,'ip':a[2]})	
 
+
 def add_user(request):
-    if request.method=="GET":
-	return render(request, 'add_user.html',{})
-    if request.method=="POST":
-	upass = request.POST.get("passwordinput")
-	userid = request.POST.get("textinput")
-	server = request.POST.get("serv")
-	projid = request.POST.get("projid")
-	servpass = Serv.objects.get(ip=server).rpass
-	createUser(server,servpass,userid,upass)
-	userz = Users(userid,upass,projid)
-	userz.save()
-    	return render(request, 'add_user.html',{})
+    if request.method == "GET":
+        return render(request, 'add_user.html', {})
+    elif request.method == "POST":
+        upass = request.POST.get("passwordinput")
+        userid = request.POST.get("textinput")
+        server = request.POST.get("serv")
+        projid = request.POST.get("projid")
+        servpass = Serv.objects.get(ip=server).rpass
+        createUser(server, servpass, userid, upass)
+        userz = Users(userid, upass, projid)
+        userz.save()
+        return render(request, 'add_user.html', {})
 
 def delete_user(request):
-     ipadd = request.GET.get('ip')
-     username = request.GET.get('user')	
-     servpass = Serv.objects.get(ip=ipadd).rpass
-     deleteUser(ipadd,servpass,username)
-     Users.objects.get(username=username).delete()
-     return HttpResponse("success")
+    ipadd = request.GET.get('ip')
+    username = request.GET.get('user')	
+    servpass = Serv.objects.get(ip=ipadd).rpass
+    deleteUser(ipadd,servpass,username)
+    Users.objects.get(username=username).delete()
+    return HttpResponse("success")

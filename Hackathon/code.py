@@ -1,6 +1,6 @@
-import paramiko
 import platform
 import time
+import paramiko
 
 def createUser(serverIp,serverPass,username,password):
 	client = paramiko.SSHClient()
@@ -18,12 +18,12 @@ def deleteUser(serverIp,serverPass,username):
 
 def listUsers(serverIp,serverPass):
 	client = paramiko.SSHClient()
-        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        client.connect(serverIp, username='root', password=serverPass)
+	client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+	client.connect(serverIp, username='root', password=serverPass)
 	stdin, stdout, stderr = client.exec_command('cut -d: -f1 /etc/passwd')
 	result = []
 	for line in stdout:
 		result.append(line.strip('/n'))		
-        client.close()
+		client.close()
 	return result
 

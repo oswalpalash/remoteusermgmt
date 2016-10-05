@@ -13,22 +13,22 @@ It is a System to create/update/delete user accounts on all servers.  A server i
 ### Features
   - Interactive GUI
 
-### Installed apps:
+### Installed apps
 
 * Django 1.8+
 * MySQLdb
 * py.test_ and coverage setup
 
-### Configured URLs:
+### Configured URLs
 
 * ``Users/admin/``
 
-### Templates:
+### Templates
 
 * ``add_serv.html``
 * ``list_serv.html``
 
-### Features:
+### Features
 
 * Settings package
 

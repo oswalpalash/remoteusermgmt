@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from datetime import datetime, timedelta
 from django.http import HttpResponse
 from django.conf import settings
@@ -36,3 +36,15 @@ def add_serv(request):
 		pass #Server doesn't exsits
 	Serv_obj.save()
 	return redirect('/')
+
+def rm_serv(request, serv_ip):
+    if request.method != 'GET':
+        return redirect('/')
+
+    if serv_ip is None:
+        return redirect('/')
+
+    serv = get_object_or_404(Serv, ip=serv_ip)
+    serv.delete()
+
+    return redirect('/')
